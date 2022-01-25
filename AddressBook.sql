@@ -39,3 +39,11 @@ select *from AddressBook;
 
 update AddressBook set firstName ='patan' where lastName = 'azam';
 select *from AddressBook;
+
+---UC5:- Ability to delete a person using person's name.
+
+Delete AddressBook where firstName='shaik';
+select * from AddressBook;
+
+Delete AddressBook where zip=412105;
+select * from AddressBook;
