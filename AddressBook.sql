@@ -100,3 +100,12 @@ select * from AddressBook;
 
 update AddressBook set Type ='Friend' where firstName='Rahul'; 
 select * from AddressBook;
+
+--UC10:- Ability to get number of contact persons i.e. count by type.
+
+select count(type) 
+from AddressBook;
+
+select Type, count(*) as TypeCount 
+from AddressBook
+group by Type;
