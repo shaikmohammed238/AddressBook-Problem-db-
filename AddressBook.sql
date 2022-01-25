@@ -47,3 +47,9 @@ select * from AddressBook;
 
 Delete AddressBook where zip=412105;
 select * from AddressBook;
+
+---UC6:- Ability to Retrieve Person belonging to a City or State from the Address Book.
+
+select city,state from AddressBook;
+
+select * from AddressBook where city='Pune' or state='Maharastra';
