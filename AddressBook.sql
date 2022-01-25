@@ -81,3 +81,22 @@ order by (firstName);
 select * from AddressBook
 where city = 'Nagpur'
 order by (firstName);
+
+---UC9:- Ability to identify each Address Book with name and Type.
+-- Here the type could Family, Friends, Profession, etc.
+-- Alter Address Book to add name and type.
+
+--UC9.1:- Alter Address Book to add name and type.
+alter table AddressBook add Name varchar(255),Type varchar(255);
+
+select * from AddressBook;
+
+--UC9.2:- Here the type could Family, Friends, Profession, etc.
+
+update AddressBook set Name='SADRAH';
+
+update AddressBook set Type ='Family' where firstName='patan';
+select * from AddressBook;
+
+update AddressBook set Type ='Friend' where firstName='Rahul'; 
+select * from AddressBook;
