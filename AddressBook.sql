@@ -24,6 +24,18 @@ select * from AddressBook;
 insert into AddressBook (firstName,lastName,address,city,state,zip,phoneNumber,email) values('shaik','mohammed','Aagar','kadapa','andhra','516001','7780531408','shiakmohammedghouse@gmail.com');
 select * from AddressBook;
 
-insert into AddressBook values('shaik','ghouse','almaspet','kadapa','andhrapradesh','123456','87673249','mohammedgshaik@gmail.com');
+insert into AddressBook values('shaik','ghouse','almaspet','kadapa','andhrapradesh','123456','87673249','moham@gmail.com');
 
 insert into AddressBook values('shaik','azam','asnh','kadapa','andhrapradesh','516001','7780531408','shouse@gmail.com');
+
+
+--- UC4:- Ability to edit existing contact person using their name
+
+update AddressBook set zip=514260 where firstName = 'shaik';
+select *from AddressBook;
+
+update AddressBook set address=7658 where lastName = 'azam';
+select *from AddressBook;
+
+update AddressBook set firstName ='patan' where lastName = 'azam';
+select *from AddressBook;
