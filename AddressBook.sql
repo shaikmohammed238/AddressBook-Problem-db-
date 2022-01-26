@@ -165,3 +165,23 @@ insert into ContactTypeMapping (FirstName,LastName,Name_id) values('Om','Khawshi
 
 select * from ContactTypeMapping;
 
+
+--- UC13:- Ensure all retrieve queries done especially in UC 6, UC 7, UC 8 and UC 10 are working with new table structure.
+
+--UC13.1:- retrieve data perticuar city or state
+select * from ContactDetails CD 
+inner join Addresses A on A.Address=CD.Address;
+
+---UC13.2:- Count Book by city or state
+select COUNT(*),City from ContactDetails CD 
+inner join Addres A on A.Address=CD.Address
+group by A.City;
+--UC13.3:- Contacts city sorted Alphabetically
+
+select * from ContactDetails CD 
+inner join Addres A on A.Address=CD.Address
+order by CD.FirstName,CD.LastName ;
+
+
+--UC13.4:- Count contact
+select Count(*) From ContactDetails;
