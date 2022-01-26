@@ -114,3 +114,54 @@ group by Type;
 
 insert into AddressBook(firstName,lastName,address,city,state,zip,phoneNumber,email,Name,Type) values('love','baby','saipet','cuddapah','andhrapradesh','126105','8762498989','baby@gmail.com','babyContact','love');
 select * from AddressBook;
+
+use AddressBookDB
+---UC12:- Draw the ER Diagram for Address Book Service DB. 
+--        Identifies the Entities – Entities can be Identified using Normalization Technique.
+--        Check each attribute and see if they are Composite or Multi-Valued.
+
+-- UC12.1:- Create table ContactDetails
+
+create table ContactDetails(FirstName varchar(20) not null,LastName varchar(20) not null,Address varchar(30) not null default('kadapa') foreign key references Addres(Address),phonenumber varchar(12) not null,Email varchar(50) not null,
+primary key (FirstName,LastName));	
+select * from ContactDetails;
+
+-- UC12.2:- insert value  ContactDetails table
+
+insert into ContactDetails(FirstName,LastName,PhoneNumber,Email)values('shaik','ghouse','8788616249','love@gmail.com');
+insert into ContactDetails(FirstName,LastName,Address,PhoneNumber,Email)values('jaan','mohammed','kadapa','1234567891','pp@gmail.com');
+insert into ContactDetails(FirstName,LastName,Address,PhoneNumber,Email)values('farheen','afreen','kadapa','1515161918','a@gmail.com');
+
+select * from ContactDetails;
+select * from Addres;
+
+-- UC12.3:-  Create table Addres
+Create table Addres(Address varchar(30) not null default ('kadapa') primary key,City varchar(20) not null,State varchar(20) not null,Zip varchar(6) not null default '412105');
+-- UC12.4:- insert value  Addresses table
+insert into Addres(City,State) values('almaspet','andhrapradesh');
+insert into Addres(Address,City,State) values('kada','SAIPET','AP');
+
+update Addres set Address='cudd' where Address='kadapa';
+select * from Addres;
+
+create table AddressBookName(Name_id int not null identity(1,1) primary key, AddressBookName varchar(50) not null unique ,ContactType varchar(50) not null unique);
+
+select * from AddressBookName;
+-- UC12.5:- insert value  AddressBookName table
+insert into AddressBookName values('Books','Friend'),('dad','Parents'),('afreen','Sister');
+select * from AddressBookName;
+
+update AddressBookName set AddressBookName='Books' where AddressBookName ='silas';
+select * from AddressBookName;
+-- UC12.6:-  Create table ContactTypeMapping
+
+create table ContactTypeMapping(FirstName varchar(50) not null,LastName varchar(50) not null,Name_id int not null foreign key references AddressBookName(Name_id),
+foreign key(FirstName,LastName) references ContactDetails(FirstName,LastName), unique(FirstName,LastName,Name_id));
+
+select * from ContactTypeMapping;
+
+-- UC12.7:-  insert value  ContactTypeMapping table
+insert into ContactTypeMapping (FirstName,LastName,Name_id) values('Om','Khawshi','1');
+
+select * from ContactTypeMapping;
+
